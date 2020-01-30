@@ -1,13 +1,141 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.content{
+  padding: 30px;
+}
+
+/* Header */
+.header-content{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #1F2421;
+  padding: 10px 5%;
+}
+
+.nav-link{
+  list-style: none;
+}
+
+.nav-link li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav-link li a, .header-content{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link li a{
+  transition: all 0.3s ease 0s;
+}
+
+.nav-link li a:hover{
+  color: #0088a1
+}
+
+.container-logo{
+  margin-right: auto;
+  
+}
+
+.header-logo{
+  width: 18%;
+  vertical-align: middle;
+}
+
+.header-title-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-button-add {
+  float: right;
+}
+
+
+
+/* Loader */
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  text-align: center;
+  top: 50%;
+}
+
+/* List */
+
+.container {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.grid-container {
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+/* Item */
+
+.grid-item {
+  color: #3a3a3a;
+  font-size: 20px;
+  border-radius: 6px;
+  padding: 10px;
+  
+}
+
+.preview-image {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.preview-title {
+  padding: 10px;
+}
+
+.preview-quote{
+  text-align: justify;
+}
+
+.grid-item-link{
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 20px;
+  text-decoration: none;
+}
+
+/* Footer */
+
+.footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #1F2421;
+  color: white;
+}
+
+.footer > p{
+  text-align: center;
+  padding: 10px;
+}
+
