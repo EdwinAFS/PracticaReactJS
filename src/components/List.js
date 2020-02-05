@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
+
 import Loading from './Loading';
 import Item from './Item';
+import Add from './Add';
+import AddButton from './AddButton';
+
 import { getQuotesList } from '../api'
 
 class List extends Component{
@@ -9,8 +13,12 @@ class List extends Component{
         
         this.state = {
             isLoading: false,
-            quotes: null
+            quotes: null,
+            showAdd: false
         }
+
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleCloseAdd = this.handleCloseAdd.bind(this);
     }
 
     async componentDidMount(){
@@ -18,12 +26,48 @@ class List extends Component{
             isLoading: true
         });
 
-        const quotes = await getQuotesList( 10 );
+        try {
+            const quotes = await getQuotesList( 10 );
         
-        this.setState({
-            isLoading: false,
-            quotes: quotes
-        })
+            this.setState({
+                isLoading: false,
+                quotes: quotes
+            });
+        } catch (error) {
+            this.setState({
+                isLoading: false,
+                quotes: null
+            });
+        }
+    }
+
+    handleAdd( e ){
+        e.preventDefault();
+        this.setState({ showAdd: true});
+    }
+    
+    handleCloseAdd(reload){
+
+        return ()=>{
+            if (reload) {
+                getQuotesList( 10 )
+                .then( quotes => {
+                    this.setState({
+                        isLoading: false,
+                        quotes: quotes,
+                        showAdd: false
+                    })
+                })
+                .catch( error => this.setState({
+                    error,
+                    isLoading: false,
+                    showAdd: false
+                }) );
+
+            } else {
+                this.setState({ showAdd: false});
+            }
+        }
     }
 
     render(){
@@ -33,15 +77,23 @@ class List extends Component{
         }
 
        return (
-            <div className='container'>
-                <div className='grid-container'>
-                    {
-                        quotes && quotes.map( (quote, i)=>{
-                            return (<Item key={i} data={{id : i, ...quote}}/>)
-                        })
-                    }
+           <React.Fragment>
+                <div className='container'>
+                    <div className='grid-container'>
+                        {
+                            quotes && quotes.map( (quote, i)=>{
+                                return (<Item key={i} data={{id : i, ...quote}}/>)
+                            })
+                        }
+                    </div>
                 </div>
-            </div>
+
+                { this.state.showAdd && (<Add onClose={ this.handleCloseAdd } />)}
+
+                <AddButton onClickAdd={ this.handleAdd } />
+           </React.Fragment>
+
+            
        );
     }
 }

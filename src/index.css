@@ -1,4 +1,6 @@
 body {
+  display:flex; 
+  flex-direction:column; 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -10,6 +12,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+body {
+  height: 100%;
+  background-color: #FFCC00;
+}
+
+#root{
+  margin-bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .content{
@@ -127,11 +141,10 @@ code {
 /* Footer */
 
 .footer{
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+  margin-top: auto;
   background: #1F2421;
   color: white;
+  height:100px;
 }
 
 .footer > p{
@@ -139,3 +152,114 @@ code {
   padding: 10px;
 }
 
+/* Buttons */
+
+/* Add */
+
+.button-add-float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.button-add-float-text {
+    font-weight: bold;
+    font-size: 21px;
+}
+
+/** MODAL **/
+
+.modal {
+  display:block;  
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit],input[type=button]  {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+   display: block;
+  margin-top:6px;
+}
+
+input[type=submit]:hover,input[type=button]:hover {
+  background-color: #45a049;
+}
+input[type=submit]:disabled,input[type=button]:disabled {
+background-color: #cccccc;
+color: #666666;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
