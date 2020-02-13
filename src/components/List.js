@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import Loading from './Loading';
+import Loading from './loading/Loading';
 import Item from './Item';
-import Add from './Add';
+import Add from './modal/Add';
 import AddButton from './AddButton';
 
 import { getQuotesList } from '../api'
@@ -43,11 +43,11 @@ class List extends Component{
 
     handleAdd( e ){
         e.preventDefault();
-        this.setState({ showAdd: true});
+        this.setState({ showAdd: true});        
     }
     
     handleCloseAdd(reload){
-
+        
         return ()=>{
             if (reload) {
                 getQuotesList( 10 )
@@ -72,9 +72,8 @@ class List extends Component{
 
     render(){
         const { isLoading, quotes } = this.state;
-        if( isLoading ){
-            return (<Loading message="Cargando ..."/>);
-        }
+        
+        if( isLoading ) return (<Loading/>);
 
        return (
            <React.Fragment>
@@ -88,12 +87,12 @@ class List extends Component{
                     </div>
                 </div>
 
-                { this.state.showAdd && (<Add onClose={ this.handleCloseAdd } />)}
+                <Add toggle={ this.handleCloseAdd } showAdd = { this.state.showAdd }/>
 
                 <AddButton onClickAdd={ this.handleAdd } />
+                
            </React.Fragment>
 
-            
        );
     }
 }

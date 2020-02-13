@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AddButton = ({onClickAdd}) => (
-  <button type="button" onClick={onClickAdd} className="button-add-float">
+import { Button } from "reactstrap";
+
+const AddButton = ({onClickAdd}) => (  
+  <Button  color="success" onClick={ onClickAdd } className="button-add-float">
     <span className="button-add-float-text">+</span>
-  </button>
+  </Button >
 );
 
 AddButton.propTypes = {

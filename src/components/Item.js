@@ -1,40 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle, 
+  Button
+} from "reactstrap";
 
-const Item = ({data}) => (
-    <React.Fragment>
-        <Link className='grid-item-link' to={`/detail/${data.id}`}>    
-            <div className="grid-item">
-                <img className='preview-image' ref={ element => fadeIn( element ) } src={ data.image} alt={data.character}/>
-                <div className='preview-title'>{data.character}</div>
-                <p className='preview-quote'>{data.quote}</p>
-            </div>
-        </Link>
-    </React.Fragment>
+const Item = ({ data }) => (
+
+	<Card>
+		<CardImg top width="100%" src={data.image} alt={data.character} />
+		
+		<CardBody>
+			<CardTitle>{data.character}</CardTitle>
+			<CardText>{data.quote}</CardText>
+			<Link to={`/detail/${data.id}`}>
+				<Button>
+					Mas informacion
+				</Button>
+			</Link>
+		</CardBody>
+
+	</Card>
 );
 
-function fadeIn(element) {
-    
-    if( element === null) return;
-
-    element.style.opacity = 0;
-  
-    var last = new Date();
-    var tick = function() {
-      element.style.opacity = +element.style.opacity + (new Date() - last) / 400;
-      last = +new Date();
-  
-      if (+element.style.opacity < 1) {
-        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-      }
-    };
-  
-    tick();
-  }
-
 Item.propTypes = {
-    data: PropTypes.object.isRequired
-}
+  data: PropTypes.object.isRequired
+};
 
 export default Item;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router';
 import { quoteDetail } from '../api'
-import Loading from './Loading';
+import Loading from './loading/Loading';
 
 class Detail extends Component{
     
@@ -13,6 +13,7 @@ class Detail extends Component{
             error: null
         }
     }
+
     async componentDidMount(){
         try {
             const { id } = this.props.match.params;
